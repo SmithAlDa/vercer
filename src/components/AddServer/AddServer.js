@@ -1,15 +1,48 @@
-import React from "react";
+import React, {useState} from "react";
 import './AddServer.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-class AddServer extends React.Component{
-    render() {
+function AddServer() {
+
+    const adminUser = {
+        password: 'admin123'
+    }
+
+    const detallesServidor = [
+        {
+        servName: '',
+        IPAddress: '',
+        FechaEmision: '',
+        FechaVencimiento: '',
+        Protocol: '',
+        IDApp: '',
+        }
+    ];
+
+    const [serv, setServ] = useState({servName: '', IPAddress: '', FechaEmision: '', FechaVencimiento: '', Protocol:'HTTPS', IDApp: ''});
+
+        const AddServerSubmit = e => {
+            e.preventDefault();
+            AddServer();
+            console.log(serv)
+        }
+
+        const AddServer = serv => {
+            if (serv.password === adminUser.password){
+              setServ({
+                servName: serv.servName,
+                IPAddress: serv.IPAddress
+              })
+            }
+          }
+
+
         return (
             <div className="InputNewServer">
-                <form>
-                <div className="InputServer">
+                <form onSubmit={AddServerSubmit}>
+                <div className="InputServer">   
                     <span>Servidor: </span>
-                    <input type="text" placeholder="Ingresa el nombre del servidor"/>
+                    <input type="text" placeholder="Ingresa el nombre del servidor" onChange={e => setServ({...serv, servName: e.target.value})} value={serv.servName}/>
                 </div>
                 <div className="InputIP">
                     <span>Ip: </span>
@@ -34,7 +67,6 @@ class AddServer extends React.Component{
                 </form>
             </div>
         )
-    }
 }
 
 export default AddServer;

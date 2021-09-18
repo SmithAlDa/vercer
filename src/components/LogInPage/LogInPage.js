@@ -5,7 +5,7 @@ function LogInPage({LogIn, error}) {
 
     const [details, setDetails] = useState({user:"",password:""});
 
-    const submitHandler = e => {
+    const LogInSubmit = e => {
         e.preventDefault();
         
         LogIn(details);
@@ -14,7 +14,7 @@ function LogInPage({LogIn, error}) {
     return (
         <div>
             <div className="NavBar"></div>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={LogInSubmit}>
             <h1>Log In</h1>
                 <div>
                     <span>Usuario:</span>

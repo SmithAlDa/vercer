@@ -9,6 +9,7 @@ import LogInPage from './components/LogInPage/LogInPage';
 
 function App() {
 
+  /* AQUÍ EMPIEZA LA CONFIG DEL LOGIN */
   const adminUser = {
     user: 'Admin01',
     password: 'admin123'
@@ -31,6 +32,8 @@ function App() {
   const LogOut = () => {
     setUser({ user:""})
   }
+  /* AQUÍ TERMINA LA CONFIG DEL LOGIN */
+
 
   return (
     <div className="App">
